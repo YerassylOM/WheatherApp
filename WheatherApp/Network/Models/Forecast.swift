@@ -1,8 +1,3 @@
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let forecast = try? JSONDecoder().decode(Forecast.self, from: jsonData)
-
 import Foundation
 
 // MARK: - Forecast
@@ -10,6 +5,21 @@ struct Forecast: Codable {
     let location: Location
     let current: CurrentClass
     let forecast: ForecastClass
+}
+
+
+enum Icon: String, Codable {
+    case cdnWeatherapiCOMWeather64X64Day113PNG = "//cdn.weatherapi.com/weather/64x64/day/113.png"
+    case cdnWeatherapiCOMWeather64X64Day116PNG = "//cdn.weatherapi.com/weather/64x64/day/116.png"
+    case cdnWeatherapiCOMWeather64X64Night113PNG = "//cdn.weatherapi.com/weather/64x64/night/113.png"
+    case cdnWeatherapiCOMWeather64X64Night116PNG = "//cdn.weatherapi.com/weather/64x64/night/116.png"
+}
+
+enum Text: String, Codable {
+    case clear = "Clear "
+    case partlyCloudy = "Partly cloudy"
+    case sunny = "Sunny"
+    case textPartlyCloudy = "Partly Cloudy "
 }
 
 // MARK: - ForecastClass
@@ -51,9 +61,10 @@ struct Astro: Codable {
 struct Day: Codable {
     let maxtempC, maxtempF, mintempC, mintempF: Double
     let avgtempC, avgtempF, maxwindMph, maxwindKph: Double
-    let totalprecipMm, totalprecipIn, totalsnowCM, avgvisKM: Double
-    let avgvisMiles, avghumidity, dailyWillItRain, dailyChanceOfRain: Int
-    let dailyWillItSnow, dailyChanceOfSnow: Int
+    let totalprecipMm: Double
+    let totalprecipIn, totalsnowCM, avgvisKM, avgvisMiles: Int
+    let avghumidity, dailyWillItRain, dailyChanceOfRain, dailyWillItSnow: Int
+    let dailyChanceOfSnow: Int
     let condition: Condition
     let uv: Int
 
@@ -91,8 +102,9 @@ struct Hour: Codable {
     let windDegree: Int
     let windDir: String
     let pressureMB: Int
-    let pressureIn, precipMm, precipIn: Double
-    let snowCM, humidity, cloud: Int
+    let pressureIn: Double
+    let precipMm, precipIn, snowCM, humidity: Int
+    let cloud: Int
     let feelslikeC, feelslikeF, windchillC, windchillF: Double
     let heatindexC, heatindexF, dewpointC, dewpointF: Double
     let willItRain, chanceOfRain, willItSnow, chanceOfSnow: Int
